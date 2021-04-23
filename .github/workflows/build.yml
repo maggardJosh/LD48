@@ -1,0 +1,117 @@
+name: Unity Build
+on:
+  push:
+    branches:
+      - master
+jobs:
+  slackNotify:
+    name: Slack Start Notification
+    runs-on: ubuntu-latest
+    outputs:
+      message_id: ${{ steps.slack.outputs.message_id }}
+    steps:
+      - id: slack
+        name: Slack Start Notification
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: maggardJosh/github-action-slack-notify-build@5fba3525d24e468111f3ed7a11caa5be533adc5c
+        with:
+          channel_id: C01V83C3K7X
+          status: STARTING
+          color: warning
+          message: Build Started - ${{ github.event.head_commit.message }}
+
+  webbuild:
+    name: WebGL Build and Deploy
+    needs: slackNotify
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+
+      # Cache
+      - uses: actions/cache@v1.1.0
+        with:
+          path: Library
+          key: Library
+
+      - uses: game-ci/unity-builder@v2.0-alpha-6
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          unityVersion: 2019.4.19f1
+          targetPlatform: WebGL
+
+      - uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: webgl
+          ITCH_GAME: ld48
+          ITCH_USER: maggardJosh
+          PACKAGE: ./build/WebGL/
+  pcbuild:
+    name: PC Build and Deploy
+    needs: slackNotify
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+
+      # Cache
+      - uses: actions/cache@v1.1.0
+        with:
+          path: Library
+          key: Library
+
+      - uses: game-ci/unity-builder@v2.0-alpha-6
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          unityVersion: 2019.4.19f1
+          targetPlatform: StandaloneWindows
+
+      - uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: pc
+          ITCH_GAME: ld48
+          ITCH_USER: maggardJosh
+          PACKAGE: ./build/StandaloneWindows/
+
+  failureNotify:
+    if: failure()
+    name: Slack Failure Notification
+    needs: [pcbuild,webbuild,slackNotify]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Slack Notification
+        uses: maggardJosh/github-action-slack-notify-build@5fba3525d24e468111f3ed7a11caa5be533adc5c
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel_id: C01V83C3K7X
+          status: FAILURE
+          color: danger
+          message: Build Failed - ${{ github.event.head_commit.message }}
+
+  successNotify:
+    if: success()
+    name: Slack Success Notification
+    needs: [pcbuild,webbuild,slackNotify]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: maggardJosh/github-action-slack-notify-build@5fba3525d24e468111f3ed7a11caa5be533adc5c
+        name: Slack Notification
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel_id: C01V83C3K7X
+          status: SUCCESS
+          color: good
+          message: Build Succeeded - ${{ github.event.head_commit.message }}
