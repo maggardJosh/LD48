@@ -3,11 +3,11 @@ using AnimationImporter.PyxelEdit;
 using UnityEngine;
 
 [SelectionBase]
-public class Rock : MonoBehaviour
+public class Rock : DisplaceObject
 {
     [SerializeField] LayerMask collisionLayer;
-
-    public void Displace(Vector3 dir)
+    
+    public override void Displace(Vector3 dir)
     {
         var collider = GetComponent<Collider2D>();
         collider.enabled = false;

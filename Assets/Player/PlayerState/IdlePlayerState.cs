@@ -34,7 +34,7 @@ namespace Player.PlayerState
 
             var firstHitResult = hitResults.First();
             
-            if (TryHitRock(directionToMove, firstHitResult))
+            if (TryHitDisplaceObject(directionToMove, firstHitResult))
                 return;
             if (TryHitGoal(directionToMove, firstHitResult))
                 return;
@@ -42,23 +42,23 @@ namespace Player.PlayerState
                 return;
         }
 
-        private bool TryHitRock(Vector2 directionToMove, RaycastHit2D hit)
+        private bool TryHitDisplaceObject(Vector2 directionToMove, RaycastHit2D hit)
         {
-            var rock= hit.collider.GetComponent<Rock>();
+            var displaceObject= hit.collider.GetComponent<DisplaceObject>();
 
-            if (rock == null)
+            if (displaceObject == null)
                 return false;
             
             var transitionToPoint = hit.point - directionToMove * .5f;
             if ((transitionToPoint.ToVector3() - Owner.transform.position).sqrMagnitude <= .1f)
             {
-                rock.Displace(directionToMove);
+                displaceObject.Displace(directionToMove);
                 return true;
             }
 
             Owner.TransitionTo(new MoveState(References, transitionToPoint, _ =>
             {
-                rock.Displace(directionToMove.ToVector3());
+                displaceObject.Displace(directionToMove.ToVector3());
                 return true;
             }));
             return true;
