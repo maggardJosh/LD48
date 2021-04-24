@@ -5,10 +5,12 @@ using UnityEngine;
 
 namespace Player
 {
+    
+    [SelectionBase]
     public class PlayerController : MonoBehaviour
     {
         private readonly IPlayerInput _playerInput = new HardcodedPlayerInput();
-        public LayerMask wallMask;
+
         public PlayerSettings settings;
 
         private PlayerState.PlayerState _state;

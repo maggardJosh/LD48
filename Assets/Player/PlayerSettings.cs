@@ -7,5 +7,7 @@ namespace Player
     {
         public float MoveTime = 1f;
         public AnimationCurve MoveCurve;
+        
+        public LayerMask collideMask;
     }
 }

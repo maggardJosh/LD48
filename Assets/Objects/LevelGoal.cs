@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
+[SelectionBase]
 public class LevelGoal : MonoBehaviour
 {
-    public GameObject NextLevelPrefab;
+    [SerializeField] private GameObject NextLevelPrefab;
 
     public void TransitionToNextLevel()
     {

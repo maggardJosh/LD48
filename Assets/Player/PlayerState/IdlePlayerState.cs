@@ -20,28 +20,82 @@ namespace Player.PlayerState
 
             var directionToMove = GetDirectionToMove(input);
 
-            List<RaycastHit2D> results = new List<RaycastHit2D>();
+            List<RaycastHit2D> hitResults = new List<RaycastHit2D>();
             var numHits = Physics2D.Raycast(Owner.transform.position, directionToMove, new ContactFilter2D
             {
-                layerMask = Owner.wallMask,
+                layerMask = Owner.settings.collideMask,
                 useLayerMask = true
-            }, results);
+            }, hitResults);
             if (numHits <= 0)
             {
-                Debug.LogError("We didn't hit any walls??");
+                Debug.LogError("We didn't hit anything when moving?!");
                 return;
             }
 
-            var hit = results.First();
-            var goal= hit.collider.GetComponent<LevelGoal>();
+            var firstHitResult = hitResults.First();
+            
+            if (TryHitRock(directionToMove, firstHitResult))
+                return;
+            if (TryHitGoal(directionToMove, firstHitResult))
+                return;
+            if (TryHitWall(directionToMove, firstHitResult))
+                return;
+        }
+
+        private bool TryHitRock(Vector2 directionToMove, RaycastHit2D hit)
+        {
+            var rock= hit.collider.GetComponent<Rock>();
+
+            if (rock == null)
+                return false;
             
             var transitionToPoint = hit.point - directionToMove * .5f;
             if ((transitionToPoint.ToVector3() - Owner.transform.position).sqrMagnitude <= .1f)
             {
-                Debug.Log("Tried to move but no where to go");
-                return;
+                rock.Displace(directionToMove);
+                return true;
             }
-            Owner.TransitionTo(new MoveState(References, transitionToPoint, goal));
+
+            Owner.TransitionTo(new MoveState(References, transitionToPoint, _ =>
+            {
+                rock.Displace(directionToMove.ToVector3());
+                return true;
+            }));
+            return true;
+        }
+
+        private bool TryHitGoal(Vector2 directionToMove, RaycastHit2D hit)
+        {
+           
+            var goal= hit.collider.GetComponent<LevelGoal>();
+
+            if (goal == null)
+                return false;
+            
+            var transitionToPoint = hit.point - directionToMove * .5f;
+            if ((transitionToPoint.ToVector3() - Owner.transform.position).sqrMagnitude <= .1f)
+            {
+                return false;
+            }
+
+            Owner.TransitionTo(new MoveState(References, transitionToPoint, _ =>
+            {
+                goal.TransitionToNextLevel();
+                GameObject.Destroy(Owner.gameObject);
+                return false;
+            }));
+            return true;
+        }
+
+        private bool TryHitWall(Vector2 directionToMove, RaycastHit2D hit)
+        {
+            var transitionToPoint = hit.point - directionToMove * .5f;
+            var isRightNextToWall = (transitionToPoint.ToVector3() - Owner.transform.position).sqrMagnitude <= .1f;
+            if (isRightNextToWall)
+                return false;
+
+            Owner.TransitionTo(new MoveState(References, transitionToPoint, _ => true));
+            return true;
         }
 
         private static Vector2 GetDirectionToMove(PlayerInput input)
