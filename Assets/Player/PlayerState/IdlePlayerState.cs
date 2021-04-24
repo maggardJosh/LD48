@@ -32,13 +32,16 @@ namespace Player.PlayerState
                 return;
             }
 
-            var transitionToPoint = results.First().point - directionToMove * .5f;
+            var hit = results.First();
+            var goal= hit.collider.GetComponent<LevelGoal>();
+            
+            var transitionToPoint = hit.point - directionToMove * .5f;
             if ((transitionToPoint.ToVector3() - Owner.transform.position).sqrMagnitude <= .1f)
             {
                 Debug.Log("Tried to move but no where to go");
                 return;
             }
-            Owner.TransitionTo(new MoveState(References, transitionToPoint));
+            Owner.TransitionTo(new MoveState(References, transitionToPoint, goal));
         }
 
         private static Vector2 GetDirectionToMove(PlayerInput input)
