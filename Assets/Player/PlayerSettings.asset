@@ -40,3 +40,6 @@ MonoBehaviour:
   collideMask:
     serializedVersion: 2
     m_Bits: 256
+  bubbleMask:
+    serializedVersion: 2
+    m_Bits: 1024

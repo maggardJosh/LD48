@@ -10,9 +10,10 @@ public class CameraAutoSizer : MonoBehaviour
 
     private CinemachineVirtualCamera _cam;
     
-    void Awake()
+    void Start()
     {
         _cam = GetComponent<CinemachineVirtualCamera>();
+        UpdateCamBounds();
     }
 
     // Update is called once per frame
@@ -20,6 +21,11 @@ public class CameraAutoSizer : MonoBehaviour
     {
         if (Application.isPlaying)
             return;
+        UpdateCamBounds();
+    }
+
+    private void UpdateCamBounds()
+    {
         if (!mapBounds)
             return;
 
@@ -35,8 +41,7 @@ public class CameraAutoSizer : MonoBehaviour
 
         float size = mapBounds.bounds.extents.y;
         float sizeBasedOnWidth = mapBounds.bounds.extents.x / _cam.m_Lens.Aspect;
-        _cam.m_Lens.OrthographicSize = Mathf.Max(size, sizeBasedOnWidth);
-        _cam.transform.position = mapBounds.bounds.center;
-
+        _cam.m_Lens.OrthographicSize = Mathf.Max(size, sizeBasedOnWidth) + 1f;
+        _cam.transform.position = mapBounds.bounds.center + Vector3.down * 1f;
     }
 }

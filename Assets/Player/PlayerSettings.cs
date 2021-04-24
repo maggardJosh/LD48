@@ -9,5 +9,6 @@ namespace Player
         public AnimationCurve MoveCurve;
         
         public LayerMask collideMask;
+        public LayerMask bubbleMask;
     }
 }

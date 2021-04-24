@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Player.Input;
 using UnityEngine;
 
@@ -17,10 +18,25 @@ namespace Player.PlayerState
             _startPoint = references.Owner.transform.position;
             _transitionToPoint = transitionToPoint;
             _moveCallback = moveCallback;
-
+            
             _dist = (_startPoint - _transitionToPoint).magnitude;
+            List<RaycastHit2D> results = new List<RaycastHit2D>();
+            Physics2D.Raycast(_startPoint, (transitionToPoint - _startPoint).normalized, new ContactFilter2D
+            {
+                layerMask = references.Owner.settings.bubbleMask,
+                useLayerMask = true
+            }, results, _dist);
+            foreach (var hit in results)
+            {
+                var bubbleComponent = hit.collider.GetComponent<Bubble>();
+                if (bubbleComponent != null)
+                {
+                    bubbleComponent.Collect();
+                    Owner.AddKey();
+                }
+            }
         }
-
+        
         protected override void HandleUpdate(PlayerInput input)
         {
             var t = StateCount / (Owner.settings.MoveTime * _dist);

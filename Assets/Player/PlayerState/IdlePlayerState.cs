@@ -33,13 +33,36 @@ namespace Player.PlayerState
             }
 
             var firstHitResult = hitResults.First();
-            
+
             if (TryHitDisplaceObject(directionToMove, firstHitResult))
                 return;
             if (TryHitGoal(directionToMove, firstHitResult))
                 return;
+            if (TryHitDoor(directionToMove, firstHitResult))
+                return;
             if (TryHitWall(directionToMove, firstHitResult))
                 return;
+        }
+
+        private bool TryHitDoor(Vector2 directionToMove, RaycastHit2D hit)
+        {
+            var door = hit.collider.GetComponent<Door>();
+            if (door == null)
+                return false;
+            
+            var transitionToPoint = hit.point - directionToMove * .5f;
+            if ((transitionToPoint.ToVector3() - Owner.transform.position).sqrMagnitude <= .1f)
+            {
+                return false;
+            }
+            
+            Owner.TransitionTo(new MoveState(References, transitionToPoint, _ =>
+            {
+                if(Owner.UseKey())
+                    door.Open();
+                return true;
+            }));
+            return true;
         }
 
         private bool TryHitDisplaceObject(Vector2 directionToMove, RaycastHit2D hit)
