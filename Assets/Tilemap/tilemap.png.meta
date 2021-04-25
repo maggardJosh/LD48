@@ -19,7 +19,7 @@ TextureImporter:
     second: empty
   - first:
       213: -8420670720628680731
-    second: tilemap_5
+    second: bg
   - first:
       213: 8266258911003420344
     second: tilemap_6
@@ -527,7 +527,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -535,6 +535,27 @@ TextureImporter:
       bones: []
       spriteID: 1e500f0998ee60780800000000000000
       internalID: -8717017754119436831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e7156e1894c32b80800000000000000
+      internalID: -8420670720628680731
       vertices: []
       indices: 
       edges: []
