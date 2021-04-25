@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace ImportedTools
 {
@@ -20,7 +21,7 @@ namespace ImportedTools
                     if (m_Instance == null)
                     {
                         // Search for existing instance.
-                        m_Instance = (T)FindObjectOfType(typeof(T));
+                        m_Instance = (T)Resources.FindObjectsOfTypeAll(typeof(T)).FirstOrDefault();
  
                         // Create new instance if one doesn't already exist.
                         if (m_Instance == null)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class LevelContainer : MonoBehaviour
@@ -11,6 +12,14 @@ public class LevelContainer : MonoBehaviour
         if (String.IsNullOrWhiteSpace(LevelName))
             LevelName = gameObject.name;
         LevelText.Instance.SetLevelName(LevelName);
+        RestartListener.Instance.isTransitioning = true;
+        StartCoroutine(SetTransitioningAfterDelay(2));
+    }
+
+    private IEnumerator SetTransitioningAfterDelay(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        RestartListener.Instance.isTransitioning = false;
     }
 
 }

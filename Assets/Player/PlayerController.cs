@@ -54,13 +54,11 @@ namespace Player
         }
         void Update()
         {
+            if (RestartListener.Instance.isTransitioning)
+                return;
+            
             PlayerInput input = _playerInput.GetInput();
             _state.Update(input);
-
-            if (input.RestartInput)
-            {
-                RestartListener.Instance.RestartCurrentLevel();
-            }
         }
 
         private void FixedUpdate()

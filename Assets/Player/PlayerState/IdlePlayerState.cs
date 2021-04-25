@@ -15,6 +15,12 @@ namespace Player.PlayerState
         
         protected override void HandleUpdate(PlayerInput input)
         {
+            
+            if (input.RestartInput)
+            {
+                RestartListener.Instance.RestartCurrentLevel();
+            }
+            
             if (input.MoveInput.sqrMagnitude <= 0.1f)
                 return;
             
