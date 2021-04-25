@@ -56,6 +56,11 @@ namespace Player
         {
             PlayerInput input = _playerInput.GetInput();
             _state.Update(input);
+
+            if (input.RestartInput)
+            {
+                RestartListener.Instance.RestartCurrentLevel();
+            }
         }
 
         private void FixedUpdate()

@@ -38,7 +38,6 @@ public class CameraAutoSizer : MonoBehaviour
         }
 
         float size = mapBounds.bounds.extents.y;
-     //   float sizeBasedOnWidth = mapBounds.bounds.extents.x / _cam.m_Lens.Aspect;
         _cam.m_Lens.OrthographicSize = size + 1f;
         _cam.transform.position = mapBounds.bounds.center + Vector3.down * 1f;
     }

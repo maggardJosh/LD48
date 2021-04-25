@@ -56,6 +56,8 @@ namespace Player.PlayerState
             var transitionToPoint = hit.point - directionToMove * .5f;
             if ((transitionToPoint.ToVector3() - Owner.transform.position).sqrMagnitude <= .1f)
             {
+                if(Owner.UseKey())
+                    door.Open();
                 return false;
             }
             
@@ -72,9 +74,12 @@ namespace Player.PlayerState
         {
             var displaceObject= hit.collider.GetComponent<DisplaceObject>();
 
-            if (displaceObject == null)
+            if (displaceObject == null )
                 return false;
-            
+
+            if (!displaceObject.CanHit())
+                return true;    //If we can't hit this object just don't do anything. This was implemented to handle rocks moving
+
             var transitionToPoint = hit.point - directionToMove * .5f;
             if ((transitionToPoint.ToVector3() - Owner.transform.position).sqrMagnitude <= .1f)
             {
@@ -99,6 +104,7 @@ namespace Player.PlayerState
                 return false;
             
             var transitionToPoint = hit.point - directionToMove * .5f;
+            transitionToPoint += Vector2.down * 3;
             if ((transitionToPoint.ToVector3() - Owner.transform.position).sqrMagnitude <= .1f)
             {
                 return false;
