@@ -12,31 +12,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578052e615d84c78a7af5f39715b8ff9, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  MoveTime: 0.1
+  MoveTime: 0.2
   MoveCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2.0402517
-      outSlope: 2.0402517
+      inSlope: 0.5471698
+      outSlope: 0.5471698
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.054166667
+      outWeight: 0.125
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.23773587
-      outSlope: 0.23773587
+      inSlope: 1.6087393
+      outSlope: 1.6087393
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.20833331
+      inWeight: 0.07916665
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  BeginMoveTime: 0.2
+  BeginMoveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  MaxMoveTime: 0.25
+  MaxBeginMoveTime: 0.25
   collideMask:
     serializedVersion: 2
     m_Bits: 256
