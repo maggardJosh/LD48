@@ -8,4 +8,9 @@ public class Fish : DisplaceObject
         GetComponent<BoxCollider2D>().enabled = false;
         Destroy(gameObject, 2f);
     }
+
+    public override bool CanHit()
+    {
+        return true;
+    }
 }
