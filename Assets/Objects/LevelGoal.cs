@@ -5,6 +5,7 @@ public class LevelGoal : MonoBehaviour
 {
     public void TransitionToNextLevel()
     {
+        AudioManager.PlayOneShot(AudioClips.Instance.Goal);
         var nextLevelPrefab = RestartListener.Instance.currentLevelContainer.NextLevelPrefab;
         if (!nextLevelPrefab)
         {

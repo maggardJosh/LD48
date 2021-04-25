@@ -41,6 +41,12 @@ namespace Player.PlayerState
             }
         }
 
+        public override void EnterState()
+        {
+            AudioManager.PlayOneShot(AudioClips.Instance.TridentHit);
+            base.EnterState();
+        }
+
         public override void ExitState()
         {
             _tridentAnimation.gameObject.SetActive(false);
