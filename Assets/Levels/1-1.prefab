@@ -451,8 +451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f40c10837b9b474980670f6cdcb5ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevelPrefab: {fileID: 6356420105235430527, guid: 457d3d7be723b48cb8ed7a79412fefc8,
-    type: 3}
 --- !u!1 &6356420104628795097
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,6 +3049,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff809f9a5c6f4e758d77aa4c6f76392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NextLevelPrefab: {fileID: 6356420105235430527, guid: 457d3d7be723b48cb8ed7a79412fefc8,
+    type: 3}
 --- !u!1001 &6345947795267448807
 PrefabInstance:
   m_ObjectHideFlags: 0

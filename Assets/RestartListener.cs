@@ -11,10 +11,11 @@ public class RestartListener : Singleton<RestartListener>
     [SerializeField] private float fadeTime = .5f;
     [SerializeField] private AnimationCurve fadeCurve;
     private float _fadeCount;
-    
+    public LevelContainer currentLevelContainer;
     
     public void SetInstantiatedLevel(LevelContainer levelContainer)
     {
+        currentLevelContainer = levelContainer;
         _instantiatedLevel = levelContainer.gameObject;
     }
     
