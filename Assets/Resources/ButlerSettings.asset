@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98be14693aec3f0478e4a0655967b655, type: 3}
   m_Name: ButlerSettings
   m_EditorClassIdentifier: 
-  GameName: game-name
-  UserName: username
+  GameName: ld48
+  UserName: maggardJosh
   BuildAndroid: 0
-  BuildWeb: 0
-  BuildPC: 0
+  BuildWeb: 1
+  BuildPC: 1
   KeystorePassword: 
   KeystoreAlias: 
   KeystoreAliasPassword: 
