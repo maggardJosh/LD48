@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TridentAnimation : MonoBehaviour
 {
-    private float _count = 0;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
-    public void AnimateTo(Vector3 pos)
+    public void SetHeight(float height)
     {
-        
+        var tempSize = spriteRenderer.size;
+        tempSize.y = height;
+        spriteRenderer.size = tempSize;
     }
 }

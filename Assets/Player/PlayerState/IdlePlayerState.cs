@@ -17,6 +17,9 @@ namespace Player.PlayerState
         {
             if (input.MoveInput.sqrMagnitude <= 0.1f)
                 return;
+            
+            References.Animator.SetFloat("XMove", input.MoveInput.x);
+            References.Animator.SetFloat("YMove", input.MoveInput.y);
 
             var directionToMove = GetDirectionToMove(input);
 
@@ -56,12 +59,12 @@ namespace Player.PlayerState
                 return false;
             }
             
-            Owner.TransitionTo(new MoveState(References, transitionToPoint, _ =>
+            Owner.TransitionTo(new BeginMoveState(References, transitionToPoint, _ =>
             {
                 if(Owner.UseKey())
                     door.Open();
                 return true;
-            }));
+            },directionToMove));
             return true;
         }
 
@@ -79,11 +82,11 @@ namespace Player.PlayerState
                 return true;
             }
 
-            Owner.TransitionTo(new MoveState(References, transitionToPoint, _ =>
+            Owner.TransitionTo(new BeginMoveState(References, transitionToPoint, _ =>
             {
                 displaceObject.Displace(directionToMove.ToVector3());
                 return true;
-            }));
+            }, directionToMove));
             return true;
         }
 
@@ -101,12 +104,12 @@ namespace Player.PlayerState
                 return false;
             }
 
-            Owner.TransitionTo(new MoveState(References, transitionToPoint, _ =>
+            Owner.TransitionTo(new BeginMoveState(References, transitionToPoint, _ =>
             {
                 goal.TransitionToNextLevel();
                 GameObject.Destroy(Owner.gameObject);
                 return false;
-            }));
+            }, directionToMove));
             return true;
         }
 
@@ -117,7 +120,7 @@ namespace Player.PlayerState
             if (isRightNextToWall)
                 return false;
 
-            Owner.TransitionTo(new MoveState(References, transitionToPoint, _ => true));
+            Owner.TransitionTo(new BeginMoveState(References, transitionToPoint, _ => true, directionToMove));
             return true;
         }
 

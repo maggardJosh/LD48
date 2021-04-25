@@ -15,14 +15,20 @@ namespace Player
 
         private PlayerState.PlayerState _state;
         private int _keyCount = 0;
-        public PlayerController()
+
+        public FourWayTridentAnimationContainer tridentAnimations;
+        private SpriteRenderer _srend;
+
+        private void Awake()
         {
-            _state = new IdlePlayerState(new PlayerStateReferences(this));
+            _state = new IdlePlayerState(new PlayerStateReferences(this, GetComponent<Animator>()));
+
         }
 
         private void Start()
         {
             KeyUI.Instance.UpdateKeyCount(_keyCount);
+            _srend = GetComponentInChildren<SpriteRenderer>();
         }
 
         public void AddKey()
@@ -55,6 +61,11 @@ namespace Player
         private void FixedUpdate()
         {
             _state.FixedUpdate();
+        }
+
+        public void SetFlipX(bool flip)
+        {
+            _srend.flipX = flip;
         }
     }
 }
