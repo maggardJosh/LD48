@@ -56,6 +56,8 @@ namespace Player.PlayerState
             var transitionToPoint = hit.point - directionToMove * .5f;
             if ((transitionToPoint.ToVector3() - Owner.transform.position).sqrMagnitude <= .1f)
             {
+                if(Owner.UseKey())
+                    door.Open();
                 return false;
             }
             
