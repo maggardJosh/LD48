@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using AnimationImporter.PyxelEdit;
 using UnityEngine;
 
 [SelectionBase]
