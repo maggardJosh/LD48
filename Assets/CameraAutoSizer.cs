@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
+﻿using Cinemachine;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -9,8 +7,8 @@ public class CameraAutoSizer : MonoBehaviour
     public Collider2D mapBounds;
 
     private CinemachineVirtualCamera _cam;
-    
-    void Start()
+
+    private void Awake()
     {
         _cam = GetComponent<CinemachineVirtualCamera>();
         UpdateCamBounds();
@@ -40,8 +38,8 @@ public class CameraAutoSizer : MonoBehaviour
         }
 
         float size = mapBounds.bounds.extents.y;
-        float sizeBasedOnWidth = mapBounds.bounds.extents.x / _cam.m_Lens.Aspect;
-        _cam.m_Lens.OrthographicSize = Mathf.Max(size, sizeBasedOnWidth) + 1f;
+     //   float sizeBasedOnWidth = mapBounds.bounds.extents.x / _cam.m_Lens.Aspect;
+        _cam.m_Lens.OrthographicSize = size + 1f;
         _cam.transform.position = mapBounds.bounds.center + Vector3.down * 1f;
     }
 }
