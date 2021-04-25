@@ -2865,7 +2865,7 @@ GameObject:
   - component: {fileID: 6356420105235430525}
   - component: {fileID: 1629497912111452002}
   m_Layer: 0
-  m_Name: 1-5
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2921,7 +2921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextLevelPrefab: {fileID: 6356420105235430527, guid: b2e3048cef9614bb089973cf7d3468cd,
     type: 3}
-  LevelName: 1-5
+  LevelName: 5
 --- !u!1001 &418306912596044878
 PrefabInstance:
   m_ObjectHideFlags: 0
