@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578052e615d84c78a7af5f39715b8ff9, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  MoveTime: 0.2
+  MoveTime: 0.1
   MoveCurve:
     serializedVersion: 2
     m_Curve:
@@ -62,8 +62,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  MaxMoveTime: 0.25
-  MaxBeginMoveTime: 0.25
+  MaxMoveTime: 0.2
+  MaxBeginMoveTime: 0.15
   collideMask:
     serializedVersion: 2
     m_Bits: 256
