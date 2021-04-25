@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: rock
+  m_Controller: {fileID: 9100000, guid: fdffb7e966a54481298722606c4a476b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 4ac070ae5a8ca43f3b806f5427db5537, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 723bac5968c48404db62b7bfb801f5f9, type: 2}
