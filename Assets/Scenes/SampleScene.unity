@@ -950,8 +950,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minX: -4
   maxX: 4
+  minY: -20
+  maxY: 0
   randomChance: 0.9
-  randomTimeCheck: 0.3
+  randomTimeCheck: 0.8
   bubblePrefabs:
   - {fileID: 4220555251243898167, guid: 65c6169bf44fa4fe19e687bee91db498, type: 3}
   - {fileID: 4220555251243898167, guid: 2f9b02170f59a4a10ad7c2461f75eb13, type: 3}
