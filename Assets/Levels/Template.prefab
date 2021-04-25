@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 1.9, y: -9.9}
-  m_SizeDelta: {x: 504, y: 896}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2862176211982893845
 Canvas:
@@ -191,7 +191,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.86, y: -1.69}
-  m_SizeDelta: {x: 1000, y: 1000}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8119688358763403977
 CanvasRenderer:
@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f40c10837b9b474980670f6cdcb5ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextLevelPrefab: {fileID: 6356420105235430527, guid: 457d3d7be723b48cb8ed7a79412fefc8,
+  NextLevelPrefab: {fileID: 6356420105235430527, guid: 969d98b20c6614857952511cb11a53a8,
     type: 3}
 --- !u!1 &6356420104628795097
 GameObject:
@@ -3186,7 +3186,7 @@ GameObject:
   - component: {fileID: 6356420105235430524}
   - component: {fileID: 6356420105235430525}
   m_Layer: 0
-  m_Name: 1-1
+  m_Name: Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
