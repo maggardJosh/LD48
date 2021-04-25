@@ -104,6 +104,7 @@ namespace Player.PlayerState
                 return false;
             
             var transitionToPoint = hit.point - directionToMove * .5f;
+            transitionToPoint += Vector2.down * 3;
             if ((transitionToPoint.ToVector3() - Owner.transform.position).sqrMagnitude <= .1f)
             {
                 return false;
