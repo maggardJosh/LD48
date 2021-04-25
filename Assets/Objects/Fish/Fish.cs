@@ -7,6 +7,7 @@ public class Fish : DisplaceObject
     {
         GetComponent<Animator>().SetBool("Dying", true);
         GetComponent<BoxCollider2D>().enabled = false;
+        AudioManager.PlayOneShot(AudioClips.Instance.FishDie);
         Destroy(gameObject, 2f);
     }
 

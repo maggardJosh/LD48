@@ -44,6 +44,8 @@ public class RestartListener : Singleton<RestartListener>
     private IEnumerator Restart(float startingFade)
     {
         _fadeCount = startingFade;
+        if(_fadeCount==0)
+            AudioManager.PlayOneShot(AudioClips.Instance.Restart);
         while (_fadeCount < fadeTime)
         {
             _fadeCount += Time.deltaTime;

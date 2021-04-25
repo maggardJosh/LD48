@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d79533da8c475ba7dfb0cfa1d989f9, type: 3}
+  m_Name: AudioClips
+  m_EditorClassIdentifier: 
+  TridentHit: {fileID: 8300000, guid: 4f8b46e72a0744eddba80c31f68221db, type: 3}
+  Goal: {fileID: 8300000, guid: da7ca0f394b76468eb04d39f5461cdb3, type: 3}
+  FishDie: {fileID: 8300000, guid: 456ecb8e16c984ecf92a16690b485a81, type: 3}
+  RockMove: {fileID: 8300000, guid: 6e3026b680490440fbbcbb986380294b, type: 3}
+  KeyGet: {fileID: 8300000, guid: 765ab74c6fe4e4b8694dc48bdd52f56b, type: 3}
+  DoorOpen: {fileID: 8300000, guid: 47c3b3127e98b4f22b7f65ff6c27ffeb, type: 3}
+  Restart: {fileID: 8300000, guid: c1d456c01c92d459db5cbc4518508ec8, type: 3}
+  MenuBlip: {fileID: 8300000, guid: 985f0e9601ddf403c918c376fc663143, type: 3}

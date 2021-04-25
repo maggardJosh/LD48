@@ -47,6 +47,7 @@ public class Rock : DisplaceObject
         collider.enabled = true;
         if (result == 0)
         {
+            AudioManager.PlayOneShot(AudioClips.Instance.RockMove);
             _prevPos = transform.position.GetCopy();
             _newPos = transform.position + dir;
             _animCount = animTime;
