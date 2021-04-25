@@ -15,7 +15,8 @@ public class LevelGoal : MonoBehaviour
             Debug.LogError("No next level set for " + transform.parent.gameObject);
             return;
         }
+        RestartListener.Instance.SetLevelPrefab(NextLevelPrefab);
         Instantiate(NextLevelPrefab, transform.position + Vector3.left*.5f + Vector3.down*.5f, Quaternion.identity);
-        Destroy(transform.parent.gameObject, 3);
+        Destroy(transform.parent.gameObject, 2);
     }
 }
