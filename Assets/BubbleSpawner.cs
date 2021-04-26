@@ -22,7 +22,6 @@ public class BubbleSpawner : MonoBehaviour
         count += Time.deltaTime;
         while (count > randomTimeCheck)
         {
-            count -= 1;
             count -= randomTimeCheck;
             if (Random.Range(0f, 1) <= randomChance)
             {

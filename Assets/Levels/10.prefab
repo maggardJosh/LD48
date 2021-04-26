@@ -2874,7 +2874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextLevelPrefab: {fileID: 6356420105235430527, guid: ca80aaf99eca440d2b868115b0b9be41,
     type: 3}
-  LevelName: 10
+  LevelName: LEVEL 10
 --- !u!1001 &585998994344581439
 PrefabInstance:
   m_ObjectHideFlags: 0
