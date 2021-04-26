@@ -221,8 +221,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 17
+    m_Font: {fileID: 12800000, guid: ff0d0b8d822264874bf5c2b61b921163, type: 3}
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -4028,7 +4028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextLevelPrefab: {fileID: 6356420105235430527, guid: 6970457b102764448abcab8a1bdb8124,
     type: 3}
-  LevelName: 2
+  LevelName: LEVEL 2
 --- !u!1001 &1865859909937291491
 PrefabInstance:
   m_ObjectHideFlags: 0
