@@ -34,7 +34,7 @@ TextureImporter:
     second: tilemap_9
   - first:
       213: -8435285650344880516
-    second: tilemap_10
+    second: button
   - first:
       213: 2376107565742220442
     second: tilemap_11
@@ -548,7 +548,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

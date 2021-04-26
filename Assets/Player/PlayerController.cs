@@ -12,7 +12,7 @@ namespace Player
         private readonly IPlayerInput _playerInput = new HardcodedPlayerInput();
 
         public PlayerSettings settings;
-
+        public bool titleMode = false;
         private PlayerState.PlayerState _state;
         private int _keyCount = 0;
 
@@ -58,6 +58,7 @@ namespace Player
                 return;
             
             PlayerInput input = _playerInput.GetInput();
+
             _state.Update(input);
         }
 

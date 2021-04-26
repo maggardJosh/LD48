@@ -15,7 +15,11 @@ namespace Player.PlayerState
         
         protected override void HandleUpdate(PlayerInput input)
         {
-            
+            if (Owner.titleMode)
+            {
+                if (input.MoveInput != Vector2.down)
+                    return;
+            }
             if (input.RestartInput)
             {
                 RestartListener.Instance.RestartCurrentLevel();
