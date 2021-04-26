@@ -2099,7 +2099,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.332354
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2123,7 +2123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4999708, y: -8.351551, z: -1}
+  m_LocalPosition: {x: 0.49997067, y: -9.279759, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 260762506}
@@ -6029,7 +6029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf9758f64b70437895a4a52ebc717d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelPrefab: {fileID: 6356420105235430527, guid: 10d8cd85a9c3540cdab9fb069dab0ce0,
+  levelPrefab: {fileID: 6356420105235430527, guid: ac338c80ce4374380a7a7c1f26d93555,
     type: 3}
   fadeTime: 0.5
   fadeCurve:
